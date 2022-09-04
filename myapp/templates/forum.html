@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SmartOS</title>
-    <link rel="stylesheet" href="Style/style.css" />
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -34,32 +35,34 @@
       >
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link nav-hover disabled" href="os.html">OS</a>
+            <a class="nav-link nav-hover disabled" href="/os">OS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-hover" href="courses.html">Courses</a>
+            <a class="nav-link nav-hover" href="/courses">Courses</a>
           </li>
           <li class="nav-item">
             <a
               class="nav-link nav-hover nav-selected"
               aria-current="page"
-              href="#"
+              href=""
               >Forum</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-hover" href="quizz.html">Quizz</a>
+            <a class="nav-link nav-hover" href="/quizz">Quizz</a>
           </li>
         </ul>
       </div>
       <div class="col-2 d-flex justify-content-end pe-3">
         <div class="dropdown">
-          <a
+          <button
             class="btn dropdown-toggle"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
+            <span class="me-2" style="color: gray">{{ request.user }}</span>
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="22"
@@ -75,14 +78,18 @@
                 d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
               />
             </svg>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item active" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-          </a>
+          </button>
+          <ul class="dropdown-menu dropdown-menu">
+            {% if user.is_authenticated %}
+            <li>
+              <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+            </li>
+            {% else %}
+            <li>
+              <a class="dropdown-item" href="{% url 'login' %}">Log in</a>
+            </li>
+            {% endif %}
+          </ul>
         </div>
       </div>
     </nav>
@@ -125,7 +132,36 @@
               </tbody>
             </table>
           </div>
-          <div class="col-8 border"></div>
+          <div class="col-8 border">
+            <div class="m-4">
+              <ul class="forum-text-size">
+                <li class="forum-text-size">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+                  excepturi voluptatibus ad. Facere, ab debitis animi libero
+                  sint in culpa id earum modi ducimus laudantium voluptates
+                  iusto quam, officia consectetur.
+                </li>
+                <li class="forum-text-size">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+                  excepturi voluptatibus ad. Facere, ab debitis animi libero
+                  sint in culpa id earum modi ducimus laudantium voluptates
+                  iusto quam, officia consectetur.
+                </li>
+                <li class="forum-text-size">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+                  excepturi voluptatibus ad. Facere, ab debitis animi libero
+                  sint in culpa id earum modi ducimus laudantium voluptates
+                  iusto quam, officia consectetur.
+                </li>
+                <li class="forum-text-size">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+                  excepturi voluptatibus ad. Facere, ab debitis animi libero
+                  sint in culpa id earum modi ducimus laudantium voluptates
+                  iusto quam, officia consectetur.
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

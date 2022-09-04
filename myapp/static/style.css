@@ -41,6 +41,9 @@
 td{
     font-size: 13px;
 }
+.forum-text-size{
+    font-size: 10px !important; 
+}
 .login_background{
     background-image: url('Images/login_background.png');
     /* background-position: center; */

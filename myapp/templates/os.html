@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SmartOS</title>
-    <link rel="stylesheet" href="Style/style.css">
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -31,31 +32,34 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link nav-hover nav-selected" aria-current="page" href="#">OS</a>
+              <a class="nav-link nav-hover nav-selected" aria-current="page" href="">OS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-hover disabled" href="courses.html">Courses</a>
+              <a class="nav-link nav-hover disabled" href="/courses">Courses</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-hover disabled" href="forum.html">Forum</a>
+              <a class="nav-link nav-hover disabled" href="/forum">Forum</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-hover disabled" href="quizz.html">Quizz</a>
+              <a class="nav-link nav-hover disabled" href="/quizz">Quizz</a>
             </li>
           </ul>
         </div>
+      
         <div class="col-2 d-flex justify-content-end pe-3">
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" style="color: gray;" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-          </svg> -->
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" style="color: gray;" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
-            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-          </svg> -->
-  
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" style="color: gray;" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-          </svg>
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="me-2" style="color: gray;">Not logged in</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" style="color: gray;" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu">
+              <li><a class="dropdown-item" href="">Log in</a></li>
+            </ul>
+          </div>
+            
         </div>
       </div>
     </nav>
@@ -73,12 +77,16 @@
       <br>
       <div class="rounded-5 p-4 mt-4 text-center shadow-lg select-background ">
         <div class="rounded-4 bg-white p-5">
-          <a class="mx-5" href="login.html">
-            <img class="windows-img-style" src="Style/Images/Windows_logo.png" alt="">
-          </a>
-          <a class="mx-5" href="login.html">
-            <img class="macos-image-style" src="Style/Images/da9gl56-1be1a52f-05e8-43b2-97c2-cfa2c61c34b4.png" alt="">
-          </a>
+          <form method = "POST" action = "{% url 'login' %}">
+            {% csrf_token %}
+            <input type="radio" name="os" value="Windows"> <img class="windows-img-style" src="{% static 'images/Windows_logo.png' %}" alt="">
+            <input type="radio" name="os" value="MacOS"> <img class="macos-image-style" src="{% static 'images/mac.png' %}" alt="">
+            <form action="//www.html.am/html-codes/forms/html-form-tag-action.cfm" target="result" method="get">
+              <br>
+              <br>
+              
+            <input class="btn btn-primary" type="submit" value="Choose">
+             
         </div>
       </div>
     </div>
