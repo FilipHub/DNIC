@@ -1,0 +1,50 @@
+.placeholder-align {
+    text-align: center; 
+}
+.header-style{
+    color: #698298;
+}
+.nav-hover:hover{
+    /* text-decoration: underline; */
+    /* text-underline-position: below; */
+    color: #408dd0 !important;
+}
+.nav-selected{
+    color: #408dd0 !important;
+}
+.select-background{
+    background-color: #efeffc;
+}
+.windows-img-style{
+    width: 120px !important;
+    /* height: 150px; */
+}
+.macos-image-style{
+    width: 170px !important;
+    /* height: 150px; */
+}
+.courses-image-style{
+    width: 350px !important;
+}
+.course-text-size{
+    font-size: 19px;
+}
+.forum-color-accent{
+    background-color: #a9cdee;
+}
+.quizz-color{
+    color: #8abfee;
+}
+.progress-margin{
+    margin-bottom: 38px;
+}
+td{
+    font-size: 13px;
+}
+.login_background{
+    background-image: url('Images/login_background.png');
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+        
+}
